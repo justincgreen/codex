@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scroll indicator starting at a specific point down the page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="hero"><h1>Hero</h1></div>
+	<div class="div-one"><h1>One</h1></div>
+	<div class="div-two"><h1>Two</h1></div>
+	<div class="div-three"><h1>Three</h1></div>
+	<div class="div-four"><h1>Four</h1></div>
+	<div style="height: 1000px;"><h1>Five</h1></div>
+	<div class="progress"><span class="progress-bar"></span></div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script>
+		// Animate scroll bar in-between two elements
+		var win = $(window),
+			divOnePos = $(".div-one").offset().top,
+			divTwoPos = $(".div-two").offset().top,
+			divThreePos = $(".div-three").offset().top,
+			divFourPos = $(".div-four").offset().top;
+		
+		$(window).scroll(function() {
+			var winTop = win.scrollTop();
+			
+			if (winTop >= divOnePos && divFourPos >= winTop) {
+					var o = winTop - divOnePos,
+							a = divFourPos - divOnePos,
+							n = Math.floor(o / a * 101) + '%'; // 101%
+							
+					$(".progress-bar").css("width", n); // make the progress bar go from 0 to 101%
+			} else divOnePos > winTop ? $(".progress-bar").css("width", 0) : winTop > divFourPos && $(".progress-bar").css("width", a);
+			
+			// Progress bar container behavior
+			if(winTop >= divOnePos) {
+				$('.progress').addClass('active');
+			}else if(winTop <= divOnePos) {
+				$('.progress').removeClass('active');
+			}
+			// hide progress bar container when scrolled passed desired element
+			if(winTop >= divFourPos) {
+				$('.progress').removeClass('active');
+			}
+			
+			if(winTop >= divTwoPos) {
+				$('.progress-bar').addClass('orange');
+			}else winTop <= divTwoPos ? $('.progress-bar').removeClass('orange') : '';
+			
+			if(winTop >= divThreePos) {
+				$('.progress-bar').removeClass('orange');
+				$('.progress-bar').addClass('green');
+			}else winTop <= divThreePos ? $('.progress-bar').removeClass('green') : '';
+		});
+	</script>	
+</body>
+</html>

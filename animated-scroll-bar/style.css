@@ -1,0 +1,64 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  background-color: blueviolet;
+}
+
+.hero {
+  height: 700px;
+}
+
+.div-one,
+.div-two,
+.div-three {
+  height: 700px;
+}
+
+.div-four {
+  height: 1200px;
+}
+
+.div-one {
+  background-color: #FDECE9;
+}
+
+.div-two {
+  background-color: #FFE6D5;
+}
+
+.div-three {
+  background-color: salmon;
+}
+
+.progress {
+  background-color: #C4C4C4;
+  height: 15px;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.progress.active {
+  opacity: 1;
+}
+.progress .progress-bar {
+  width: 0;
+  height: 15px;
+  display: block;
+  background-color: #36B3FA;
+  transition: background-color 0.3s ease-in-out;
+}
+.progress .progress-bar.orange {
+  background-color: #FAA320;
+}
+.progress .progress-bar.green {
+  background-color: #18E02C;
+}
+
+/*# sourceMappingURL=style.css.map */

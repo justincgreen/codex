@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--blue: blue;
+	font-family: sans-serif;
+}
+
+@media(max-width: 1200px) {
+	:root {
+		--blue: red;
+	}
+}
+
+$blue: var(--blue);
+
+header {
+	padding: 40px 0;
+	text-align: center;
+	background-color: #FFE474;
+	margin-bottom: 20px;
+}
+
+// Animated line 
+.animated-line {
+	width: 400px;
+	margin: 0 auto;
+	
+	h2 {
+		--thickness: 1px;
+		--strike: 0;
+		display: inline; // needs to be set to inline to animate the line properly
+		background: linear-gradient(90deg, transparent, #000 0) no-repeat right bottom / calc(var(--strike) * 100%) var(--thickness);
+		transition: background-size .5s ease;
+		
+		&:hover {
+			--strike: 1; // 1 means "true" (show the strike line)
+			background-position-x: left;
+		}
+	}
+}
